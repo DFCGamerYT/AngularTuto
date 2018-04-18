@@ -1,0 +1,28 @@
+<div *ngIf="tasks?.length > 0; else noTasks">
+  <ul *ngFor="let task of tasks" class="collection">
+    <li class="collection-item">
+      <strong>{{ task.title }}</strong> : {{task.description}}
+      <a href="#" class="secondary-contect">
+        <a (click)="deleteTask($event, task)" class="fa fa-trash"></a>
+        <a (click)="editTask($event, task)" class="fa fa-pencil"></a>        
+      </a>
+      <div *ngIf="editState && taskToEdit.id === task.id">
+        <form (ngSubmit)="updateTask(task)">
+          <div class="row">
+            <div class="imput-field col-s6">
+              <input type="text" name="title" placeholder="Edit Title" name="title" [(ngModel)]="task.title">
+            </div>
+            <div class="input-field col-s6">
+                <input type="text" name="title" placeholder="Edit Title" name="description" [(ngModel)]="task.description">
+            </div>
+            <input type="submit" value="update" class="btn">
+          </div>
+        </form>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noTasks>
+  <h5>No existe Tasks Inscritos</h5>
+</ng-template>
