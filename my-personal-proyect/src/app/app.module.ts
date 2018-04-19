@@ -1,25 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { FormsModule } from '@angular/forms';
+//
 import { AppComponent } from './app.component';
 
-//FireBase
-import { AngularFireModule } from 'angularfire2';
+//firebase
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+
+//
 import { environment } from '../environments/environment';
 
-//Components
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule} from 'ngx-toastr';
+
+//Componentes
 import { ProductsComponent } from './components/products/products.component';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
 import { ProductComponent } from './components/products/product/product.component';
 
-//Services
-
+// Services
 import { ProductService } from './services/product.service';
-
-//
-
-import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -30,10 +33,13 @@ import { FormsModule } from '@angular/forms'
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
+//Se agrega a providers el service para tenerlo disponible en todos nuestros archivos
   providers: [
     ProductService
   ],

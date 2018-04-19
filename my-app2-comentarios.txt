@@ -1,0 +1,99 @@
+Proyecto Angular - TypeScript
+
+1. Configurar environments/environment.ts con el key a la base de datos firebase
+ firebase:{ llave }
+
+
+-------------------------------------------------------------------
+2. Configurar el app.module.ts realizando las siguientes importaciones:
+ - import { AngularFireModule } from 'angularfire2';
+ - import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+Esta importacion es para hacer uso de la configuracion de la llave acceso a firebase
+
+ - import { environment } from '../environments/environment;
+
+Esta importacion es para los componentes creados, es necesario para cada .component
+
+----------------------------------------------------------------
+
+3. Creo los componentes, servicios y clases necesarias con el comando 'ng g' + el tipo de archivo 
+
+Componentes: ng g c components/products/product
+Clases: ng g cl models/product
+Servicios: ng g s services/product
+
+-------------------------------------------------------------------
+
+4. Crear y/o configurar modelo product.ts, dentro de la class se crea cada uno de los atributos de la clase
+
+ 'Alias' ->  :  -> 'Tipo de dato' -> ','
+
+para llaves en el alias debe ir $key
+
+
+----------------------------------------------------------------------
+
+
+5. Configurar services product.services.ts en este se colocara metodos como por ejemplo crud.
+Es necesario importar acceso a firebase y al model previamente configurado
+
+import { Product } from '../models/product';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/databse';
+
+
+dentro de la clase se crean los objetos
+
+ productList: AngularFireList<any>;
+ selectedProduct: Product = new Product;
+
+En el Metodo constructor creare un objeto firebase de la siguiente forma 
+
+constructor(private firebase:AngularFireDatabase) {}
+
+Posteriormente se crean los metodos que seran utilizados en nuestro aplicativo
+
+#Metodo de Obtener Productos
+
+getProduct(){
+//daremos valor al productlist creado anteriormente el cual sera igual a la firebase.list
+	return this.productList = this.firebase.list('products');
+}
+
+#Metodo Insercion
+
+En los atributos del metodo crearemos un 'product' de tipo':' Product(modelo import)
+insertProduct(product: Product){
+	this.productList.push({
+		name: product.name,
+		categoty: product.category,
+		location: product.location,
+		price: product.price	
+	});
+}
+
+#Metodo Update igual que el caso del insert pero en vez de metodo PUSH se realizara mediante UPDATE enviando como primer parametro la key
+
+updateProduct(product: Product){
+	this.productList.udpate(product.$key,{
+		name: product.name,
+		categoty: product.category,
+		location: product.location,
+		price: product.price	
+
+	});
+}
+
+#Metodo Delete se realiza mediante un .remove con la key del product
+
+deleteProduct($key: string){
+	this.productList.remove($key);
+}
+
+
+
+-------------------------------------------------------------------------------
+
+
+
+
