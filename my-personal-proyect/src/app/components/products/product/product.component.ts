@@ -4,7 +4,7 @@ import { ProductService } from '../../../services/product.service';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
-//Class Product
+// Class Product
 import { Product } from '../../../models/product';
 
 @Component({
@@ -15,7 +15,7 @@ import { Product } from '../../../models/product';
 export class ProductComponent implements OnInit {
 
   constructor(
-    private productService:ProductService,
+    private productService: ProductService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -23,23 +23,23 @@ export class ProductComponent implements OnInit {
     this.resetForm();
   }
 
-  onSubmit(productForm: NgForm){
-    if (productForm.value.$key == null){
-      this.toastr.success('Successfull Operation', 'Product Create');  
+  onSubmit(productForm: NgForm) {
+    if (productForm.value.$key == null) {
+      this.toastr.success('Successfull Operation', 'Product Create');
       this.productService.insertProduct(productForm.value);
-    }
-    else{
-      if(confirm('Are you sure want to edit it?')){
+    } else {
+      if (confirm('Are you sure want to edit it?')) {
         this.productService.updateProduct(productForm.value);
-        this.toastr.success('Successfull Operation', 'Product Edit');  
+        this.toastr.success('Successfull Operation', 'Product Edit');
       }
       this.resetForm(productForm);
     }
   }
 
-  resetForm(productForm?: NgForm){
-    if(productForm != null)
+  resetForm(productForm?: NgForm) {
+    if (productForm != null) {
       productForm.reset();
       this.productService.selectedProduct = new Product;
+    }
   }
 }

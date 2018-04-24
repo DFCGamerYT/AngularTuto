@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-//services
+// services
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product';
 import { element } from 'protractor';
@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private toastr: ToastrService
-  ) { } 
+  ) {}
 
   ngOnInit() {
     this.productService.getProducts()
@@ -24,19 +24,20 @@ export class ProductListComponent implements OnInit {
       .subscribe(item => {
         this.productList = [];
         item.forEach(element => {
-          let x = element.payload.toJSON();
-          x["$key"] = element.key;
+          let x;
+          x = element.payload.toJSON();
+          x['$key'] = element.key;
           this.productList.push(x as Product);
         });
     });
   }
 
-  onEdit(product: Product){
-      this.productService.selectedProduct = Object.assign({},product);
+  onEdit(product: Product) {
+      this.productService.selectedProduct = Object.assign({}, product);
   }
 
-  onDelete($key: string){
-    if(confirm('Are you sure want to delete it?')){
+  onDelete($key: string) {
+    if (confirm('Are you sure want to delete it?')) {
       this.productService.deleteProduct($key);
       this.toastr.success('Successfull Operation', 'Product Deleted');
     }
