@@ -1,19 +1,16 @@
-<h3>{{titulo}}</h3>
-
-<h3>LIstado de Empleados</h3>
+<h3>Listado de Empleados</h3>
 <ul>
     <li *ngFor = "let empleadoT of trabajadores; let i = index">
-        <strong>Empleado {{i+1}}: </strong>
+        <strong>{{empleadoT.nombre}}</strong>
         <ul>
-            <li>{{empleadoT.nombre}}</li>
-            <li>{{empleadoT.edad}}</li>
-            <li>{{empleadoT.cargo}}</li>
+            <li>Edad: {{empleadoT.edad}}</li>
+            <li>Cargo: {{empleadoT.cargo}}</li>
             <li *ngIf="empleadoT.contratado == true">Esta Contratado</li>
             <li *ngIf="empleadoT.contratado == false">No Esta Contratado</li>
         </ul>
         <div>
-            <button (click)="cambiarTrabajador(i,true)" *ngIf="trabajadores[i].contratado == false">Contratar Trabajador</button>
-            <button (click)="cambiarTrabajador(i,false)" *ngIf="trabajadores[i].contratado == true">Despedir Trabajador</button>
+            <button (click)="cambiarTrabajador(i,true)" *ngIf="empleadoT.contratado == false">Contratar a {{empleadoT.nombre}} </button>
+            <button (click)="cambiarTrabajador(i,false)" *ngIf="empleadoT.contratado == true">Despedir a {{empleadoT.nombre}} </button>
         </div>
     </li>
 </ul>

@@ -6,7 +6,6 @@ import { Empleado } from './empleado';
     templateUrl: './empleado.component.html'
 })
 export class EmpleadoComponent implements OnInit {
-    public titulo = 'Listado empleados';
     public empleado: Empleado;
     public trabajadores: Array<Empleado>;
     public trabajador_externo: boolean;
