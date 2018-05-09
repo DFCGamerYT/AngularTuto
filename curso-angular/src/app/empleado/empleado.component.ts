@@ -31,8 +31,8 @@ export class EmpleadoComponent implements OnInit {
         this.empleado.contratado = valor;
     }
 
-    cambiarTrabajador(valor) {
-        this.trabajadores[1].contratado = valor;
+    cambiarTrabajador(indice, valor) {
+        this.trabajadores[indice].contratado = valor;
     }
 
     cambiarExterno(valor) {
