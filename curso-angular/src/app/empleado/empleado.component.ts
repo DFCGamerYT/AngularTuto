@@ -9,18 +9,33 @@ export class EmpleadoComponent implements OnInit {
     public titulo = 'Listado empleados';
     public empleado: Empleado;
     public trabajadores: Array<Empleado>;
+    public trabajador_externo: boolean;
 
     constructor() {
-        this.empleado = new Empleado('David Cifuentes', 21, 'Programador', true);
+        this.empleado = new Empleado('David Cifuentes', 21, 'Programador', false);
         this.trabajadores = [
             new Empleado('David Cifuentes', 21, 'Programador', true),
             new Empleado('Ana Lopez', 30, 'Cocinero', false),
             new Empleado('Victor Martinez', 35, 'Ingeniero', true)
         ];
+        this.trabajador_externo = false;
     }
 
     ngOnInit() {
         console.log(this.empleado);
         console.log(this.trabajadores);
+        console.log(this.trabajador_externo);
+    }
+
+    cambiarEmpleado(valor) {
+        this.empleado.contratado = valor;
+    }
+
+    cambiarTrabajador(valor) {
+        this.trabajadores[1].contratado = valor;
+    }
+
+    cambiarExterno(valor) {
+        this.trabajador_externo = valor;
     }
 }

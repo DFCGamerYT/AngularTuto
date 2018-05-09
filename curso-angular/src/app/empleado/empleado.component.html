@@ -1,15 +1,39 @@
 <h3>{{titulo}}</h3>
 <strong>Empleado Estrella:</strong>
-<ul>
-    <li>{{empleado.nombre}}</li>
-    <li>{{empleado.edad}}</li>
-    <li>{{empleado.cargo}}</li>
-    <li>{{empleado.contratado}}</li>
-</ul>
 
-<ul>
-    <li>{{trabajadores[1].nombre}}</li>
-    <li>{{trabajadores[1].edad}}</li>
-    <li>{{trabajadores[1].cargo}}</li>
-    <li>{{trabajadores[1].contratado}}</li>
-</ul>
+<div>
+    <button (click)="cambiarEmpleado(true)" *ngIf="empleado.contratado == false">Contratar Empleado</button>
+    <button (click)="cambiarEmpleado(false)" *ngIf="empleado.contratado == true">Despedir Empleado</button>
+</div>
+
+<div>
+    <button (click)="cambiarTrabajador(true)" *ngIf="trabajadores[1].contratado == false">Contratar Trabajador</button>
+    <button (click)="cambiarTrabajador(false)" *ngIf="trabajadores[1].contratado == true">Despedir Trabajador</button>
+</div>
+
+<hr>
+
+<div *ngIf="trabajador_externo == true">
+    <button (click)="cambiarExterno(false)">Mostrar Trabajador</button>
+    <ul>
+        <li>{{empleado.nombre}}</li>
+        <li>{{empleado.edad}}</li>
+        <li>{{empleado.cargo}}</li>
+        <li *ngIf="empleado.contratado == true">Esta Contratado</li>
+        <li *ngIf="empleado.contratado == false">No Esta Contratado</li>
+    </ul>
+</div>
+
+<div *ngIf="trabajador_externo == false">
+    <button (click)="cambiarExterno(true)">Mostrar Empleado</button>
+    <ul>
+        <li>{{trabajadores[1].nombre}}</li>
+        <li>{{trabajadores[1].edad}}</li>
+        <li>{{trabajadores[1].cargo}}</li>
+        <li *ngIf="trabajadores[1].contratado == true">Esta Contratado</li>
+        <li *ngIf="trabajadores[1].contratado == false">No Esta Contratado</li>
+    </ul>
+</div>
+<!-- directiva funcionalidad que se queda en la vista -->
+
+
