@@ -34,6 +34,22 @@
         <li *ngIf="trabajadores[1].contratado == false">No Esta Contratado</li>
     </ul>
 </div>
+
+<hr>
+
+<h3>LIstado de Empleados</h3>
+<ul>
+    <li *ngFor = "let empleadoT of trabajadores; let i = index">
+        <strong>Empleado {{i+1}}: </strong>
+        <ul>
+            <li>{{empleadoT.nombre}}</li>
+            <li>{{empleadoT.edad}}</li>
+            <li>{{empleadoT.cargo}}</li>
+            <li *ngIf="empleadoT.contratado == true">Esta Contratado</li>
+            <li *ngIf="empleadoT.contratado == false">No Esta Contratado</li>
+        </ul>
+    </li>
+</ul>
 <!-- directiva funcionalidad que se queda en la vista -->
 
 
