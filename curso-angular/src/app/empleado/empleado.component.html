@@ -1,3 +1,30 @@
+<!-- Directiva Switch -->
+<h3>Colores Switch</h3>
+<ul [ngSwitch]="color">
+    <li *ngSwitchCase="'red'" [ngStyle]="{
+        'background':color, 
+        'color': 'white',
+        'padding': '20px'
+    }">
+        Es de color ROJO
+    </li>
+    <li *ngSwitchCase="'green'" [ngStyle]="{
+        'background':color, 
+        'color': 'white',
+        'padding': '20px'
+    }">
+        Es de color VERDE
+    </li>
+    <li *ngSwitchCase="'blue'" [ngStyle]="{
+        'background':color, 
+        'color': 'white',
+        'padding': '20px'
+    }">
+        Es de color AZUL
+    </li>
+</ul>
+<hr>
+<!-- directiva funcionalidad que se queda en la vista -->
 <h3>Listado de Empleados</h3>
 <ul>
     <li *ngFor = "let empleadoT of trabajadores; let i = index">
@@ -14,6 +41,5 @@
         </div>
     </li>
 </ul>
-<!-- directiva funcionalidad que se queda en la vista -->
 
 
