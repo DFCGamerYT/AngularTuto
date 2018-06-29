@@ -20,4 +20,16 @@ export class ContactoComponent{
             this.parametro = params['page'];
         });
     }
+
+    redirigir(){
+        this._router.navigate(['/contacto','AngularTuto']);
+    }
+
+    empleado(){
+        this._router.navigate(['/empleado'])
+    }
+
+    fruta(){
+        this._router.navigate(['/fruta'])
+    }
 }

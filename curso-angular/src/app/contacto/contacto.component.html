@@ -2,3 +2,10 @@
 <strong *ngIf="parametro">
     Parametro de la URL: {{parametro}}
 </strong> 
+<div *ngIf="!parametro">
+    <button (click)="redirigir()">Ir a la Pagina con ContactoParametro</button>
+    <hr>
+    <button (click)="empleado()">Ir a la Pagina Empleado</button>
+    <hr>
+    <button (click)="fruta()">Ir a la Pagina con Fruta</button>
+</div> 
