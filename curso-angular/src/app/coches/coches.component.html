@@ -3,11 +3,14 @@
 <form #formCoche="ngForm" (submit)="onSubmit()">
     <div class="form-group">
         <label for="">Nombre:</label>
-        <input type="text" name="nombre" [(ngModel)]="coche.nombre" id="" class="form-control" required>
+        <input type="text" name="nombre" [(ngModel)]="coche.nombre" id="" class="form-control" required pattern="[a-zA-Z]+">
+        <span *ngIf="coche.nombre.touched">
+            El nombre del coche es incorrecto
+        </span>
     </div>
     <div class="form-group">
         <label for="">Color:</label>
         <input type="text" name="color" [(ngModel)]="coche.color" id="" class="form-control" required>
     </div>
-    <input type="submit" value="Guardar" class="btn btn-success">
+    <input type="submit" value="Guardar" class="btn btn-success" [disabled]="!formCoche.valid">
 </form>
