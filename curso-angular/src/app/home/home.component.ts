@@ -15,6 +15,8 @@ export class HomeComponent{
     public prenda_a_guardar: string;
     public fecha;
 
+    public nombre: string = "DAVID Felipe Cifuentes Villa"
+
     constructor(
         private _ropaService: RopaService
     ){
